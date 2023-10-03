@@ -1,0 +1,6 @@
+[
+  {
+    "ParameterKey": "VpcName",
+    "ParameterValue": "Secondary-VPC"
+  }
+]
