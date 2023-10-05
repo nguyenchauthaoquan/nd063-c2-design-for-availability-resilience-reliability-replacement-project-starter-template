@@ -1,0 +1,30 @@
+I. Recovery Time Object (RTO)
+
+Recovery Time Object (RTO) is the amount of time or real time during or after a disaster that can elapse without a business restoring its services and processes
+to acceptable levels before it will experience intolerable consequences associated with the disruption.
+
+The RTO answers the question: “How much real time will it take the business to recover after notification of the business process disruption?”
+
+1. Minimum RTO for a single AZ outage
+RTO timing requires initializing a new RDS instance and applying all changes since the last backup, in case of multi-AZ deployment, the standby instance is already
+running and data is replicated synchronously. It takes from 60-120 seconds
+In the event of a planned or unplanned outage of your DB instance, Amazon RDS automatically switches to a standby replica in another Availability Zone if you have enabled Multi-AZ.
+The time it takes for the failover to complete depends on the database activity and other conditions at the time the primary DB instance became unavailable.
+Failover times are typically 60–120 seconds. However, large transactions or a lengthy recovery process can increase failover time
+
+2. Minimum RTO for a single region outage
+In this case RTO timing requires initializing a new Amazon RDS instance and then applying all
+changes since the last backup, it takes only from 30 minutes to 1 hour. However, if the time to bring read replica as a standalone primary instance takes 15-20 minutes and the time to connect the new endpoint takes from 15-120 minutes,
+so it will take from 45 to 60 minutes.
+
+II. Recover point objective (RPO)
+Recovery point objective (RPO) is defined as the maximum amount of data – as measured by time – that can be lost after a recovery from a disaster, failure, or comparable event before data loss will exceed what is acceptable to an organization.
+RPO, which is also expressed in hours, represents how much data you could lose when a disaster happens. For example, an RPO of 1 hour means that you could lose up to 1 hour’s worth of data when a disaster occurs.
+1. Minimum RPO for a single AZ outage
+For the single AZ scenario, it takes at least once a day for a full snapshot, every 5 minutes for transactional log backups. However, other scenarios can be takes only 5 minutes:
+a. Database deletion
+b. Manual snapshots availability
+
+2. Minimum RPO for a single region outage
+During initial setup and installation time, it takes minimum 15-20 minutes for system to get into Available state.
+If we have a complete read replica in another region, there will be no data loss

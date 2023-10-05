@@ -1,0 +1,49 @@
+$ ssh -i "udacity.pem" ec2-user@ec2-34-203-221-136.compute-1.amazonaws.com
+The authenticity of host 'ec2-34-203-221-136.compute-1.amazonaws.com (34.203.221.136)' can't be established.
+ED25519 key fingerprint is SHA256:ReT5z4AycREnMGbgVSnlllIEH40iEzKgwAYI1pfxDtk.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? SHA256:ReT5z4AycREnMGbgVSnlllIEH40iEzKgwAYI1pfxDtk
+Warning: Permanently added 'ec2-34-203-221-136.compute-1.amazonaws.com' (ED25519) to the list of known hosts.
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Thu Oct  5 13:54:43 2023 from 18.206.107.28
+[ec2-user@ip-10-0-11-155 ~]$ mysql -h primary-rds.c69aweg9svqd.us-east-1.rds.amazonaws.com -u admin -p udacity
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 30
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [udacity]> CREATE TABLE tutorial (
+    -> id INT NOT NULL AUTO_INCREMENT, \
+    -> title VARCHAR(250) NOT NULL, \
+    -> tutor_name VARCHAR(250), \
+    -> PRIMARY KEY(id) \
+    -> );
+Query OK, 0 rows affected (0.195 sec)
+
+MySQL [udacity]> INSERT INTO tutorial(title, tutor_name) VALUES('AWS Cloud Architect', 'Udacity');
+Query OK, 1 row affected (0.018 sec)
+
+MySQL [udacity]> SELECT * FROM tutorial
+    -> ;
++----+---------------------+------------+
+| id | title               | tutor_name |
++----+---------------------+------------+
+|  1 | AWS Cloud Architect | Udacity    |
++----+---------------------+------------+
+1 row in set (0.002 sec)
+
+MySQL [udacity]>
+

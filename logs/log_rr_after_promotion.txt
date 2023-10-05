@@ -1,0 +1,33 @@
+[ec2-user@ip-10-0-11-183 ~]$ mysql -h secondary-rds.cwwtabncldf3.us-east-2.rds.amazonaws.com -u admin -p udacity
+Enter password:
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [udacity]> SELECT * FROM tutorial;
++----+---------------------+------------+
+| id | title               | tutor_name |
++----+---------------------+------------+
+|  1 | AWS Cloud Architect | Udacity    |
++----+---------------------+------------+
+1 row in set (0.001 sec)
+
+MySQL [udacity]> INSERT INTO tutorial (title, tutor_name) VALUES('Cloud devops engineer', 'Udacity');
+Query OK, 1 row affected (0.006 sec)
+
+MySQL [udacity]> SELECT * FROM tutorial;
++----+-----------------------+------------+
+| id | title                 | tutor_name |
++----+-----------------------+------------+
+|  1 | AWS Cloud Architect   | Udacity    |
+|  2 | Cloud devops engineer | Udacity    |
++----+-----------------------+------------+
+2 rows in set (0.001 sec)
+
